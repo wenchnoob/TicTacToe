@@ -66,7 +66,7 @@ public class Game implements Runnable{
         boolean played;
         System.out.println(board.toString());
         do {
-            System.out.print(p.getName() + " please input your desired row position {1, 3}: ");
+            System.out.print("\n" + p.getName() + " please input your desired row position {1, 3}: ");
             y = read.nextInt();
 
             System.out.print("\n" +p.getName() + " please input your desired column position {1, 3}: ");
@@ -80,7 +80,7 @@ public class Game implements Runnable{
 
         } while(!played);
 
-        System.out.println(p.getName() + " played at position (" + x + ", " + y + ")");
+        System.out.println("\n" +p.getName() + " played at position (" + x + ", " + y + ")");
         turn++;
     }
 
