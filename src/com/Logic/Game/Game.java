@@ -14,8 +14,8 @@ public class Game implements Runnable{
     private int turn = 0;
     private int winner = 0;
 
-    public Game() {
-        logicBoard = new LogicBoard();
+    public Game(LogicBoard logicBoard) {
+        this.logicBoard = logicBoard;
         p1 = new Player(1);
         p2 = new Player(2);
     }

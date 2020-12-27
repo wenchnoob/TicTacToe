@@ -15,6 +15,16 @@ public class LogicBoard {
             {' ', '|', ' ', '|', ' '}
     };
 
+    public void restart() {
+        board = new char[][]{
+                {' ', '|', ' ', '|', ' '},
+                {'-', '+', '-', '+', '-'},
+                {' ', '|', ' ', '|', ' '},
+                {'-', '+', '-', '+', '-'},
+                {' ', '|', ' ', '|', ' '}
+        };
+    }
+
 
     public int[][] state() {
         return new int[][] {{board[0][0], board[0][2], board[0][4]}, {board[2][0], board[2][2], board[2][4]}, {board[4][0], board[4][2], board[4][4]}};

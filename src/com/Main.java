@@ -1,7 +1,8 @@
-package com.Logic.Game;
+package com;
 
 import com.GUI.Window;
 import com.Logic.Board.LogicBoard;
+import com.Logic.Game.Game;
 import com.Logic.Utilities.Annotations.Author;
 import com.Logic.Utilities.Annotations.Published;
 import com.Logic.Utilities.Annotations.Title;
@@ -12,10 +13,12 @@ import com.Logic.Utilities.Annotations.Title;
 public class Main {
 
     public static void main(String[] args) {
-        Game game = new Game();
-        Thread t = new Thread(game);
-        t.start();
+        LogicBoard logicBoard = new LogicBoard();
 
-        Window win = new Window(new LogicBoard());
+        //Game game = new Game(logicBoard);
+        //Thread t = new Thread(game);
+        //t.start();
+
+        Window win = new Window(logicBoard);
     }
 }
