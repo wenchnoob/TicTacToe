@@ -1,9 +1,13 @@
 package com.Logic.Board;
 
 import com.Logic.Player.Player;
+import com.Logic.Utilities.Exceptions.NoSuchPlayerException;
 import com.Logic.Utilities.Exceptions.PositionTakenException;
 
 public class LogicBoard {
+
+    private Player p1;
+    private Player p2;
 
     private int turn = 1;
 
@@ -14,6 +18,19 @@ public class LogicBoard {
             {'-', '+', '-', '+', '-'},
             {' ', '|', ' ', '|', ' '}
     };
+
+    public LogicBoard(Player p1, Player p2) {
+        this.p1 = p1;
+        this.p2 = p2;
+    }
+
+    public Player getPlayer(int id) throws NoSuchPlayerException {
+        return switch (id) {
+            case 1 -> p1;
+            case 2 -> p2;
+            default -> throw new NoSuchPlayerException("That is not a valid player ID");
+        };
+    }
 
     public void restart() {
         board = new char[][]{
@@ -35,7 +52,7 @@ public class LogicBoard {
             case 0, 1, 2:
                 switch (y) {
                     case 0, 1, 2 -> {
-                        if (board[y*2][x*2] != ' ' && !isErasing) throw new PositionTakenException();
+                        if (board[y*2][x*2] != ' ' && !isErasing) throw new PositionTakenException("That position has already been taken.");
                         board[y*2][x*2] = c;
                         return true;
                     }

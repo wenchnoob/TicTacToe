@@ -6,8 +6,10 @@ import java.awt.*;
 public class Footer extends JPanel {
     private final DefaultPane defaultPane;
     private JPanel contentPane;
+    private final Window parent;
 
-    public Footer() {
+    public Footer(Window parent) {
+        this.parent = parent;
         defaultPane = new DefaultPane();
         setContentPane(new StarterPane());
     }
@@ -27,20 +29,17 @@ public class Footer extends JPanel {
         updateUI();
     }
 
-    private class DefaultPane extends JPanel {
+    private static class DefaultPane extends JPanel {
         public DefaultPane() {
             add(new JLabel("Footer"));
         }
     }
 
     private class StarterPane extends JPanel {
-        private String p1Name;
-        private String p2Name;
+        private final JTextField p1Input = new JTextField();
+        private final JTextField p2Input = new JTextField();
 
-        private JTextField p1Input = new JTextField();
-        private JTextField p2Input = new JTextField();
-
-        private JButton proceed = new JButton("Proceed");
+        private final JButton proceed = new JButton("Proceed");
 
         public StarterPane() {
             setLayout(new GridLayout(3, 1));
@@ -64,8 +63,12 @@ public class Footer extends JPanel {
             });
 
             proceed.addActionListener(action -> {
-                p1Name = p1Input.getText();
-                p2Name = p2Input.getText();
+                String p1Name = p1Input.getText();
+                String p2Name = p2Input.getText();
+
+                parent.getPlayerOne().setName(p1Name.equals("") ? "Player One": p1Name);
+                parent.getPlayerTwo().setName(p2Name.equals("") ? "Player Two": p2Name);
+                parent.updatePanels();
                 Footer.this.reset();
             });
 
@@ -75,14 +78,6 @@ public class Footer extends JPanel {
                     add(proceed);
                 }
             });
-        }
-
-        public String getP1Name() {
-            return p1Name;
-        }
-
-        public String getP2Name() {
-            return p2Name;
         }
     }
 }

@@ -18,7 +18,7 @@ public class Board extends JPanel {
     private Player p1, p2;
     private Header header;
     private boolean[] ended = {false, false};
-    private Window parent;
+    private final Window parent;
 
     ActionListener gameListener = new ActionListener() {
         @Override
@@ -55,8 +55,8 @@ public class Board extends JPanel {
         this.logicBoard = logicBoard;
         this.parent = parent;
         header = (Header) parent.getPanel(Window.WindowContentConstants.HEADER);
-        p1 = new Player(1);
-        p2 = new Player(2);
+        p1 = parent.getPlayerOne();
+        p2 = parent.getPlayerTwo();
 
         setLayout(new GridLayout(3, 3));
 
@@ -111,9 +111,9 @@ public class Board extends JPanel {
     private void roundOver() {
         if(ended[0]) {
             if(ended[1]) {
-                header.setContent("Player One has won!");
+                header.setContent(parent.getPlayerOne().getName() + " has won!");
             } else {
-                header.setContent("Player two has won!");
+                header.setContent(parent.getPlayerTwo().getName() + " Player two has won!");
             }
         } else {
             header.setContent("The game has ended as a TIE!");

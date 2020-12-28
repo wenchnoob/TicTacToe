@@ -3,6 +3,7 @@ package com;
 import com.GUI.Window;
 import com.Logic.Board.LogicBoard;
 import com.Logic.Game.Game;
+import com.Logic.Player.Player;
 import com.Logic.Utilities.Annotations.Author;
 import com.Logic.Utilities.Annotations.Published;
 import com.Logic.Utilities.Annotations.Title;
@@ -13,7 +14,9 @@ import com.Logic.Utilities.Annotations.Title;
 public class Main {
 
     public static void main(String[] args) {
-        LogicBoard logicBoard = new LogicBoard();
+        Player p1 = new Player(1);
+        Player p2 = new Player(2);
+        LogicBoard logicBoard = new LogicBoard(p1, p2);
 
         //Game game = new Game(logicBoard);
         //Thread t = new Thread(game);

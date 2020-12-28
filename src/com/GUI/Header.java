@@ -6,8 +6,10 @@ public class Header extends JPanel {
 
     private final JLabel contentLabel;
     private String prevContent;
+    private final Window parent;
 
-    public Header() {
+    public Header(Window parent) {
+        this.parent = parent;
         contentLabel = new JLabel("Click a gridsquare to start the game!!");
         add(contentLabel);
     }

@@ -3,8 +3,8 @@ package com.Logic.Player;
 public class Player {
 
     private int ID;
-    String name;
-    String sym;
+    private String name;
+    private String sym;
 
     public Player(String name, int id) {
         this.name = name;
@@ -31,6 +31,11 @@ public class Player {
     public String getName() {
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getID() { return ID; }
     public String getSym() { return sym; }
 }
